@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notification Loop</title>
+</head>
+<body>
+  <h1>Notification Loop Test</h1>
+  <script>
+    Notification.requestPermission().then(function(permission) {
+      if (permission === "granted") {
+        setInterval(() => {
+          new Notification("Hey Ethan!", {
+            body: "This is your looping alert.",
+            icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fire_icon.svg/120px-Fire_icon.svg.png"
+          });
+        }, 10000);
+      }
+    });
+  </script>
+</body>
+</html>
