@@ -1,60 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tap to Start Alerts</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding-top: 50px;
-    }
-    #alertBox {
-      display: none;
-      background: #ffefc1;
-      border: 2px solid #ffc107;
-      padding: 20px;
-      margin: 20px auto;
-      width: 80%;
-      font-size: 18px;
-      border-radius: 8px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 18px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-    }
-  </style>
+  <title>It’s Working!</title>
 </head>
 <body>
-  <h1>Tap to Start Alerts</h1>
-  <button onclick="startAlerts()">Start Alerts</button>
-  <div id="alertBox">🔔 Ethan, this is your fallback alert!</div>
-  <audio id="alertSound" src="https://freesound.org/data/previews/341/341695_5260877-lq.mp3"></audio>
-
-  <script>
-    function showFallbackAlert() {
-      document.getElementById("alertBox").style.display = "block";
-      navigator.vibrate?.(200);
-      document.getElementById("alertSound").play();
-    }
-
-    function startAlerts() {
-      Notification.requestPermission().then(function(permission) {
-        if (permission === "granted" && "Notification" in window) {
-          setInterval(() => {
-            new Notification("Hey Ethan!", {
-              body: "This is your looping alert.",
-              icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fire_icon.svg/120px-Fire_icon.svg.png"
-            });
-          }, 10000);
-        } else {
-          setInterval(showFallbackAlert, 10000);
-        }
-      });
-    }
-  </script>
+  <h1>Hello Ethan 👋</h1>
+  <p>Your GitHub Pages site is live and working!</p>
 </body>
 </html>
