@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hybrid Alert</title>
+  <title>Tap to Start Alerts</title>
   <style>
     body {
       font-family: sans-serif;
@@ -18,10 +18,19 @@
       font-size: 18px;
       border-radius: 8px;
     }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
-  <h1>Hybrid Alert Test</h1>
+  <h1>Tap to Start Alerts</h1>
+  <button onclick="startAlerts()">Start Alerts</button>
   <div id="alertBox">🔔 Ethan, this is your fallback alert!</div>
   <audio id="alertSound" src="https://freesound.org/data/previews/341/341695_5260877-lq.mp3"></audio>
 
@@ -32,18 +41,20 @@
       document.getElementById("alertSound").play();
     }
 
-    Notification.requestPermission().then(function(permission) {
-      if (permission === "granted" && "Notification" in window) {
-        setInterval(() => {
-          new Notification("Hey Ethan!", {
-            body: "This is your looping alert.",
-            icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fire_icon.svg/120px-Fire_icon.svg.png"
-          });
-        }, 10000);
-      } else {
-        setInterval(showFallbackAlert, 10000);
-      }
-    });
+    function startAlerts() {
+      Notification.requestPermission().then(function(permission) {
+        if (permission === "granted" && "Notification" in window) {
+          setInterval(() => {
+            new Notification("Hey Ethan!", {
+              body: "This is your looping alert.",
+              icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fire_icon.svg/120px-Fire_icon.svg.png"
+            });
+          }, 10000);
+        } else {
+          setInterval(showFallbackAlert, 10000);
+        }
+      });
+    }
   </script>
 </body>
 </html>
